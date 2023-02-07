@@ -17,6 +17,7 @@ import reactor.core.publisher.Mono;
 
 @WebFluxTest(OrderController.class)
 public class OrderControllerWebFluxTests {
+	
 	@Autowired
 	private WebTestClient webClient;
 
@@ -41,4 +42,5 @@ public class OrderControllerWebFluxTests {
 				assertThat(actualOrder.status()).isEqualTo(OrderStatus.REJECTED);
 			});
 	}
+	
 }

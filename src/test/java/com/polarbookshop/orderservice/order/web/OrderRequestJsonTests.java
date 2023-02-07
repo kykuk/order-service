@@ -10,6 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @JsonTest
 public class OrderRequestJsonTests {
+	
 	@Autowired
 	private JacksonTester<OrderRequest> json;
 	
@@ -24,4 +25,5 @@ public class OrderRequestJsonTests {
 		assertThat(this.json.parse(content))
 			.usingRecursiveComparison().isEqualTo(new OrderRequest("1234567890", 1));
 	}
+	
 }

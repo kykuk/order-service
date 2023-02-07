@@ -18,6 +18,7 @@ import org.springframework.test.context.DynamicPropertySource;
 @Import(DataConfig.class)
 @Testcontainers
 public class OrderRepositoryR2dbcTests {
+	
 	@Container
 	static PostgreSQLContainer<?> postgresql = new PostgreSQLContainer<>(DockerImageName.parse("postgres:14.4"));
 	

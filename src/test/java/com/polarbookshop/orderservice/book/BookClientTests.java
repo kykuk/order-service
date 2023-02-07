@@ -25,6 +25,7 @@ public class BookClientTests {
 	void setup() throws IOException {
 		this.mockWebServer = new MockWebServer();
 		this.mockWebServer.start();
+		
 		var webClient = WebClient.builder()
 			.baseUrl(mockWebServer.url("/").uri().toString())
 			.build();
