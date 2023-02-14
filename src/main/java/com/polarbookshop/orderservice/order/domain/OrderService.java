@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class OrderService {
+	
 	private static final Logger log = LoggerFactory.getLogger(OrderService.class);
 
 	private final BookClient bookClient;
@@ -27,8 +28,8 @@ public class OrderService {
 		this.orderRepository = orderRepository;
 	}
 	
-	public Flux<Order> getAllOrders() {
-		return orderRepository.findAll();
+	public Flux<Order> getAllOrders(String userId) {
+		return orderRepository.findAllByCreatedBy(userId);
 	}
 	
 	@Transactional
@@ -41,7 +42,8 @@ public class OrderService {
 	}
 
 	public static Order buildAcceptedOrder(Book book, int quantity) {
-		return Order.of(book.isbn(), book.title() + " - " + book.author(), book.price(), quantity, OrderStatus.ACCEPTED);
+		return Order.of(book.isbn(), book.title() + " - " + book.author(), 
+				book.price(), quantity, OrderStatus.ACCEPTED);
 	}
 	
 	public static Order buildRejectedOrder(String bookIsbn, int quantity) {
@@ -75,7 +77,10 @@ public class OrderService {
 			OrderStatus.DISPATCHED,
 			existingOrder.createdDate(),
 			existingOrder.lastModifiedDate(),
+			existingOrder.createdBy(),
+			existingOrder.lastModifiedBy(),
 			existingOrder.version()
 		);
 	}
+	
 }

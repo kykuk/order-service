@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class OrderFunctions {
+	
 	private static final Logger log = LoggerFactory.getLogger(OrderFunctions.class);
 	
 	@Bean
