@@ -11,7 +11,7 @@
 	<groupId>com.polarbookshop</groupId>
 	<artifactId>order-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>order-service-1</name>
+	<name>order-service</name>
 	<description>Provides functionality for purchasing books.</description>
 	<properties>
 		<java.version>17</java.version>
